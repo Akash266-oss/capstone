@@ -1,8 +1,22 @@
 #!/bin/bash
-    echo hi123
-    sh 'chmod +x build.sh'
-    sh './build.sh'
-    docker login -u ar8888 -p dckr_pat_HU8f1bsQJp3j2DnCttXuuoppo7w
-    docker tag test ar8888/ar
-    docker push ar8888/ar
+echo running
+docker login -u akash3020  -p dckr_pat_DjcHSBpOzXX4cBcNRBwHBN25f_4
+
+if [[ $GIT_BRANCH == "origin/dev" ]]; then
+       sh'chmod +x build.sh'
+       sh'./build.sh'
+
+        docker tag test akash3020/dev
+        docker push akash3020/dev
+
+if [[ $GIT_BRANCH == "origin/master" ]]; then
+        sh'chmod +x build.sh'
+        sh'./build.sh'
+
+        docker tag test akash3020/prod
+        docker push akash3020/prod
+
+else
+        echo "failed"
+fi
     
