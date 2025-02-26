@@ -3,6 +3,7 @@ echo running
 docker login -u akash3020  -p dckr_pat_DjcHSBpOzXX4cBcNRBwHBN25f_4
 
 if [[ $GIT_BRANCH == "origin/dev" ]]; then
+ echo "running build"
        sh 'chmod +x build.sh'
        sh './build.sh'
 
